@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -11,7 +11,11 @@ import { ApiService } from '../api.service';
 export class SearchComponent {
   constructor(private apiService: ApiService) { }
 
-  updateProduits(input: string) {
+  updateAll(input : string = "") {
     this.apiService.getProduits(input, input, +input).subscribe();
+  }
+
+  updateIndividual(name : string = "", type : string = "", price : number = 0) {
+    this.apiService.getProduitsIndividual(name, type, price).subscribe();
   }
 }
